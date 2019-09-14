@@ -3,7 +3,14 @@ const { Strategy } = require('passport-local');
 
 module.exports = function localStrategy() {
   passport.use(new Strategy(
+    {
+      usernameField: 'email',
+      passwordField: 'passowrd',
+    },
     (username, password, done) => {
+      console.log(username);
+      console.log(password);
+      return done(null, { username });
       //     User.findOne({ username: username }, function (err, user) {
       //         if (err) { return done(err); }
       //         if (!user) {
